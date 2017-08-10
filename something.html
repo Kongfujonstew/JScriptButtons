@@ -1,0 +1,78 @@
+<html>
+<link rel="stylesheet" href="styles.css">
+<body>
+
+<div id="bigContainer"></div>
+
+</body>
+
+<script>
+
+var container = document.createElement('div');
+container.classList.add("container");
+
+var bigContainer = document.getElementById("bigContainer");
+
+for (var h = 1; h <= 5; h++) {
+  var newContainer = document.createElement('div');
+  newContainer.classList.add("container");
+  newContainer.id = 'c'+h;
+  bigContainer.appendChild(newContainer);
+}
+
+var targetContainer = 1;
+for (var i = 1; i <= 20; i++) {
+  var buttonNumber = i;
+  var thisContainer = document.getElementById('c'+targetContainer);
+  var nextButton = document.createElement('div');
+  var texto = document.createTextNode("Button "+ buttonNumber);
+  nextButton.appendChild(texto);
+  nextButton.classList.add('but');
+  nextButton.id = i;
+  if (i%4 === 0) {
+    targetContainer+=1;
+  }
+  thisContainer.appendChild(nextButton);
+}
+
+var hoverin = function(e) {
+  var classes = document.getElementById(e.path[0].id).classList
+  if (!classes.contains("clicked") && !classes.contains("hover")) {
+    classes.add("hover");
+  }
+}
+
+var hoverout = function(e) {
+  var classes = document.getElementById(e.path[0].id).classList;
+  if (!classes.contains("clicked")) {
+    classes.remove("hover");
+  }
+}
+
+var clicko = function(e) {
+  var classes = document.getElementById(e.path[0].id).classList;
+  if (!classes.contains("clicked")) {
+    classes.remove("hover");
+    classes.add("clicked");
+  } else {
+    classes.remove("clicked");
+  }
+}
+
+for (var j = 1; j <= 20; j++) {
+  var nextButton = document.getElementById(j);
+  nextButton.addEventListener('mouseenter', function (j) {
+    hoverin(j);
+  });
+  nextButton.addEventListener('mouseleave', function (j) {
+    hoverout(j);
+  });
+  nextButton.addEventListener('click', function (j) {
+    clicko(j);
+  });
+}
+
+
+</script>
+
+</html>

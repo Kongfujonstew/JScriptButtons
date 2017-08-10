@@ -1,0 +1,28 @@
+body {
+  font-family: arial;
+}
+
+.container {
+  display: flex;
+}
+
+.but {
+  background-color: skyblue;
+  color: white;
+  margin: 2px;
+  height: 40px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.but:hover {
+  cursor:pointer;
+}
+
+.hover {
+  background-color: grey;
+}
+
+.clicked {
+  background-color: black;
+}
